@@ -19,20 +19,21 @@ import ScrollToTopButton from './Components/ScrollToTop/ScrollToTopButton.jsx';
 
 function Layout() {
   return (
-    <div className="">
+    <div>
       <NavBar />
-      <main className="">
+      <main>
         <Outlet />
       </main>
       <Footer />
-      <ScrollToTopButton/>
+      <ScrollToTopButton />
     </div>
   )
 }
 
 function App() {
 
-  const isLoggedIn = false; 
+  // ✅ نجيب حالة تسجيل الدخول من localStorage
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
   return (
     <HashRouter>
@@ -57,4 +58,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
