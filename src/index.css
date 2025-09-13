@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+.container {
+    width: 85%;
+    margin: auto;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: red;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ddd;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+  background-color: rgb(0,0,0,0.75);
+}
