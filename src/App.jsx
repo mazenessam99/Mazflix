@@ -1,6 +1,4 @@
-import { HashRouter, Route, Routes, Outlet } from 'react-router-dom';
-
-
+import { HashRouter, Route, Routes, Outlet, Navigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "aos/dist/aos.css";
@@ -19,7 +17,6 @@ import Wishlist from './Pages/Wishlist/Wishlist';
 import Footer from './Components/Footer/Footer';
 import ScrollToTopButton from './Components/ScrollToTop/ScrollToTopButton.jsx';
 
-
 function Layout() {
   return (
     <div className="">
@@ -35,25 +32,26 @@ function Layout() {
 
 function App() {
 
+  const isLoggedIn = false; 
 
   return (
     <HashRouter>
       <Routes>
 
         <Route element={<Layout />}>
-          <Route path='/' element={<Home />} />
-          <Route path='/movies' element={<Movies />} />
-          <Route path='/tvShows' element={<TVShows />} />
-          <Route path='/movie/:id' element={<MovieDetails />} />
-          <Route path='/tv/:id' element={<TVShowDetails />} />
-          <Route path="/wishlist" element={<Wishlist />} />
+          <Route path='/' element={isLoggedIn ? <Home /> : <Navigate to="/login" replace />} />
+          <Route path='/movies' element={isLoggedIn ? <Movies /> : <Navigate to="/login" replace />} />
+          <Route path='/tvShows' element={isLoggedIn ? <TVShows /> : <Navigate to="/login" replace />} />
+          <Route path='/movie/:id' element={isLoggedIn ? <MovieDetails /> : <Navigate to="/login" replace />} />
+          <Route path='/tv/:id' element={isLoggedIn ? <TVShowDetails /> : <Navigate to="/login" replace />} />
+          <Route path='/wishlist' element={isLoggedIn ? <Wishlist /> : <Navigate to="/login" replace />} />
           <Route path='*' element={<NotFound />} />
         </Route>
-        
+
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
       </Routes>
-       
+
       <ToastContainer position="bottom-right" autoClose={2000} />
     </HashRouter>
   )
