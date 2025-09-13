@@ -1,4 +1,6 @@
-import { BrowserRouter, Route, Routes,Outlet } from 'react-router-dom'
+import { HashRouter, Route, Routes, Outlet } from 'react-router-dom';
+
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "aos/dist/aos.css";
@@ -35,7 +37,7 @@ function App() {
 
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
 
         <Route element={<Layout />}>
@@ -53,7 +55,7 @@ function App() {
       </Routes>
        
       <ToastContainer position="bottom-right" autoClose={2000} />
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
